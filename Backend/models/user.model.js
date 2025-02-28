@@ -38,8 +38,8 @@ userSchema.methods.generateAuthToken = () => {
   return (token = jwt.sign({ _id: this._id }, env.JWT_SECRET));
 };
 
-userSchema.methods.comparePassword = async (password) => {
-  return await bcrypt.compare(password, this.password);
+userSchema.methods.comparePassword = async (password, hashPassword) => {
+  return await bcrypt.compare(password, hashPassword);
 };
 
 userSchema.statics.hashPassword = async (password) => {

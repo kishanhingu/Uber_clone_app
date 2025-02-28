@@ -92,3 +92,41 @@ Example:
   "error": "Internal Server Error"
 }
 ```
+
+## Endpoint: /users/login
+
+Method: POST
+
+Description: Authenticates a user and provides a token for accessing secured resources.
+
+### Request Body
+
+email (string, required): The user's email address.
+password (string, required): The user's password.
+
+Response:
+Success (200 OK):
+
+```json
+{
+  "token": "your_jwt_token",
+  "user": {
+    "_id": "user_id",
+    "fullname": {
+      "firstname": "John",
+      "lastname": "Doe"
+    },
+    "email": "john.doe@example.com",
+    "createdAt": "2023-10-01T00:00:00.000Z",
+    "updatedAt": "2023-10-01T00:00:00.000Z"
+  }
+}
+```
+
+Error (401 Unauthorized):
+
+```json
+{
+  "message": "Invalid email or password"
+}
+```
