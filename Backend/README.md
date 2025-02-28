@@ -130,3 +130,40 @@ Error (401 Unauthorized):
   "message": "Invalid email or password"
 }
 ```
+
+## `/users/profile` Endpoint
+
+### Description
+
+Retrieves the profile information of the currently authenticated user.
+
+### HTTP Method
+
+`GET`
+
+### Authentication
+
+Requires a valid JWT token in the Authorization header:
+`Authorization: Bearer <token>`
+
+### Example response
+
+- `user` (object):
+  - `fullname` (object)
+    - `firstname` (string): User's first name (min 3 character)
+    - `lastname` (string): User's last name (min 3 character)
+  - `email` (string): User's email address (must be a valid email)
+
+## `/users/logout` Endpoint
+
+### Description
+
+Logout the current user and blacklist the token provided in cookie or headers
+
+### HTTP Method
+
+`GET`
+
+### Authentication
+
+Requires a valid JWT token in the Authorization header or cookies:
